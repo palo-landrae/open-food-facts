@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { OpenfoodfactsService } from '../openfoodfacts.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-products',
@@ -20,7 +21,8 @@ export class ProductsComponent implements OnInit {
   //SpotifyService
   constructor(
     private route: ActivatedRoute,
-    private openfoodfacts: OpenfoodfactsService
+    private openfoodfacts: OpenfoodfactsService,
+    private location: Location
   ) { }
 
   getRouterParam = (params: ParamMap) => {
@@ -37,5 +39,9 @@ export class ProductsComponent implements OnInit {
     //Ottengo l'observable che notifica le informazioni sulla route attiva
     this.obsRoute = this.route.paramMap;
     this.obsRoute.subscribe(this.getRouterParam);
+  }
+
+  back(): void {
+    this.location.back();
   }
 }
