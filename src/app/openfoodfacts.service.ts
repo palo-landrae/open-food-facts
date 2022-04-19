@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
@@ -7,8 +7,9 @@ export class OpenfoodfactsService {
   constructor(private http: HttpClient) { }
 
   searchFood(query: string) {
-    const url = ``;
+    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${query}&page_size=1&json=true`;
 
-    let obsFood = http.get();
+    let obsFoods = this.http.get(url);
+    return obsFoods;
   }
 }
