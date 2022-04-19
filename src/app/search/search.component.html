@@ -17,7 +17,9 @@
           <img src="{{ p.image_thumb_url }}" style="height: 120px" />
           <div class="caption">
             <h4>
-              {{ p.product_name }}
+              <a [routerLink]="['/products', p.id]">
+                {{ p.product_name }}
+              </a>
             </h4>
             <span>{{ p.brands }}</span>
           </div>

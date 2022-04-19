@@ -8,8 +8,12 @@ export class OpenfoodfactsService {
 
   searchFood(query: string) {
     const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${query}&page_size=1&json=true`;
-
     let obsFoods = this.http.get(url);
     return obsFoods;
+  }
+
+  getFood(id: string) {
+    const url = `https://world.openfoodfacts.org/api/v0/product/${id}`;
+    return this.http.get(url);
   }
 }
